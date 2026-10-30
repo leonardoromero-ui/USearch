@@ -1,4 +1,9 @@
 {
+  "cmake.configureSettings": {
+    "USEARCH_BUILD_TEST_CPP": "ON",
+    "USEARCH_BUILD_BENCH_CPP": "ON"
+  },
+  "cmake.buildDirectory": "${workspaceFolder}/build_release",
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.formatOnSave": true

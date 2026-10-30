@@ -13,7 +13,6 @@
 #include <DbgHelp.h>
 #pragma comment(lib, "Dbghelp.lib")
 
-#define STDERR_FILENO HANDLE(2)
 #else
 #if defined(__linux__)
 #include <execinfo.h> // `backtrace`
@@ -480,8 +479,8 @@ void handler(int sig) {
             name = "<unknown>";
         }
         DWORD bytes_written;
-        WriteFile(STDERR_FILENO, name, static_cast<DWORD>(std::strlen(name)), &bytes_written, NULL);
-        WriteFile(STDERR_FILENO, "\n", 1, &bytes_written, NULL);
+        WriteFile(GetStdHandle(STD_ERROR_HANDLE), name, static_cast<DWORD>(std::strlen(name)), &bytes_written, NULL);
+        WriteFile(GetStdHandle(STD_ERROR_HANDLE), "\n", 1, &bytes_written, NULL);
     }
     free(symbol);
 #elif defined(USEARCH_DEFINED_LINUX)
